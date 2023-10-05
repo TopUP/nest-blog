@@ -1,5 +1,6 @@
 export class CreatePostDto {
-    category_id : number;
+    userId     : number;
+    categoryId : number;
     title       : string;
     body        : string;
 }
