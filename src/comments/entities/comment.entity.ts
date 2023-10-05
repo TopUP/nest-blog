@@ -10,8 +10,7 @@ export class Comment {
     @ManyToOne(type => User, user => user.comments, {eager: true})
     user: User
 
-    @OneToOne(type => Post, {eager: true})
-    @JoinColumn()
+    @ManyToOne(type => Post, post => post.comments, {eager: true})
     post: Post
 
     @Column()
