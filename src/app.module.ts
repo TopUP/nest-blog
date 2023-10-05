@@ -17,8 +17,9 @@ import { CommentsModule }   from './comments/comments.module';
 import { Comment }             from './comments/entities/comment.entity';
 
 import { CategoriesModule } from './categories/categories.module';
-import { Category }             from './categories/entities/category.entity';
+import { Category }         from './categories/entities/category.entity';
 
+import { AuthModule }       from './auth/auth.module';
 
 @Module({
     imports: [
@@ -26,7 +27,10 @@ import { Category }             from './categories/entities/category.entity';
         PostsModule,
         CommentsModule,
         CategoriesModule,
+        AuthModule,
+
         ConfigModule.forRoot(),
+
         TypeOrmModule.forRoot({
             type        : 'mysql',
             host        : process.env.DATABASE_HOST,
@@ -43,6 +47,7 @@ import { Category }             from './categories/entities/category.entity';
             synchronize : true,
         }),
     ],
+    exports: [ UsersModule ],
     controllers: [AppController],
     providers: [AppService],
 })

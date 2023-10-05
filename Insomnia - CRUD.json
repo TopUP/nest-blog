@@ -1,13 +1,93 @@
 {
     "_type": "export",
     "__export_format": 4,
-    "__export_date": "2023-10-05T11:52:51.552Z",
+    "__export_date": "2023-10-05T21:42:23.903Z",
     "__export_source": "insomnia.desktop.app:v2023.5.8",
     "resources": [
         {
+            "_id": "req_50737fbe142042979805b8ebec901053",
+            "parentId": "wrk_65afff19c6c94569af333b01f13251e9",
+            "modified": 1696539064192,
+            "created": 1696532158346,
+            "url": "http://localhost:3000/auth/register",
+            "name": "Auth register",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"full_name\"\t: \"Full Name 2\",\n\t\"email\"\t\t\t: \"register2@email.com\",\n\t\"password\"\t: \"password\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/2023.5.8"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1696532158347,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "wrk_65afff19c6c94569af333b01f13251e9",
+            "parentId": null,
+            "modified": 1696497397236,
+            "created": 1696497397236,
+            "name": "base",
+            "description": "",
+            "scope": "collection",
+            "_type": "workspace"
+        },
+        {
+            "_id": "req_bd5e18319e814853984610413fe638b3",
+            "parentId": "wrk_65afff19c6c94569af333b01f13251e9",
+            "modified": 1696539072883,
+            "created": 1696532183169,
+            "url": "http://localhost:3000/auth/login",
+            "name": "Auth login",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"email\"\t\t\t: \"register2@email.com\",\n\t\"password\"\t: \"password\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/2023.5.8"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1696514780811,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
             "_id": "req_b9069f9f0e2d4e59b361feef4c726ebf",
             "parentId": "wrk_65afff19c6c94569af333b01f13251e9",
-            "modified": 1696506505501,
+            "modified": 1696532210718,
             "created": 1696497403275,
             "url": "http://localhost:3000/users",
             "name": "Users create",
@@ -15,7 +95,7 @@
             "method": "POST",
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"email\"\t\t\t: \"email1@email.com\",\n\t\"password\"\t: \"password\"\n}"
+                "text": "{\n\t\"full_name\"\t: \"Full Name 1\",\n\t\"email\"\t\t\t: \"email1@email.com\",\n\t\"password\"\t: \"password\"\n}"
             },
             "parameters": [],
             "headers": [
@@ -38,16 +118,6 @@
             "settingRebuildPath": true,
             "settingFollowRedirects": "global",
             "_type": "request"
-        },
-        {
-            "_id": "wrk_65afff19c6c94569af333b01f13251e9",
-            "parentId": null,
-            "modified": 1696497397236,
-            "created": 1696497397236,
-            "name": "base",
-            "description": "",
-            "scope": "collection",
-            "_type": "workspace"
         },
         {
             "_id": "req_d7e5570ea2804f8191fd645060bdbba4",
@@ -325,7 +395,7 @@
         {
             "_id": "req_8f426127aadd4ecab22d2bc2e4f268fe",
             "parentId": "wrk_65afff19c6c94569af333b01f13251e9",
-            "modified": 1696506551955,
+            "modified": 1696542020485,
             "created": 1696504188507,
             "url": "http://localhost:3000/posts",
             "name": "Posts create",
@@ -346,7 +416,12 @@
                     "value": "insomnia/2023.5.8"
                 }
             ],
-            "authentication": {},
+            "authentication": {
+                "type": "bearer",
+                "disabled": false,
+                "prefix": "Bearer",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJGdWxsIE5hbWUgMiIsImVtYWlsIjoicmVnaXN0ZXIyQGVtYWlsLmNvbSIsImlkIjo1LCJpYXQiOjE2OTY1NDIwMDksImV4cCI6MTY5NjU0ODY2OX0.FjlZk80kpdkoZK3tmXg9CVk03gd6PqkccTN7jLHyz20"
+            },
             "metaSortKey": -1694776400138.125,
             "isPrivate": false,
             "settingStoreCookies": true,
