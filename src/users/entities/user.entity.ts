@@ -1,5 +1,5 @@
 import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
-import {Injectable} from "@nestjs/common";
+import {ApiProperty} from "@nestjs/swagger";
 
 import {Post}       from "../../posts/entities/post.entity";
 import {Comment}    from "../../comments/entities/comment.entity";
@@ -7,20 +7,20 @@ import {Comment}    from "../../comments/entities/comment.entity";
 @Entity()
 export class User {
     @PrimaryGeneratedColumn()
-    id: number;
+    @ApiProperty() id: number;
 
     @Column()
-    full_name: string;
+    @ApiProperty() full_name: string;
 
     @Column({unique: true})
-    email: string;
+    @ApiProperty() email: string;
 
     @Column()
-    password: string;
+    @ApiProperty() password: string;
 
-    @OneToMany(type => Post, post => post.user)
-    posts: Post[]
+    @OneToMany(() => Post, post => post.user)
+    @ApiProperty({type: () => [Post]}) posts: Post[]
 
-    @OneToMany(type => Comment, comment => comment.user)
-    comments: Comment[]
+    @OneToMany(() => Comment, comment => comment.user)
+    @ApiProperty({type: () => [Comment]}) comments: Comment[]
 }

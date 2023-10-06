@@ -1,25 +1,27 @@
 import {Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany } from "typeorm";
-import {User} from "../../users/entities/user.entity";
-import {Comment} from "../../comments/entities/comment.entity";
-import {Category} from "../../categories/entities/category.entity";
+import {ApiProperty} from "@nestjs/swagger";
+
+import {User}       from "../../users/entities/user.entity";
+import {Comment}    from "../../comments/entities/comment.entity";
+import {Category}   from "../../categories/entities/category.entity";
 
 @Entity()
 export class Post {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(type => User, user => user.posts, {eager: true})
-    user: User
+    @ManyToOne(() => User, user => user.posts, {eager: true})
+    @ApiProperty({type: () => User}) user: User
 
-    @ManyToOne(type => Category, category => category.posts, {eager: true})
-    category: Category;
-
-    @Column()
-    title: string;
+    @ManyToOne(() => Category, category => category.posts, {eager: true})
+    @ApiProperty({type: () => Category}) category: Category;
 
     @Column()
-    body: string;
+    @ApiProperty() title: string;
 
-    @OneToMany(type => Comment, comment => comment.post)
-    comments: Comment[]
+    @Column()
+    @ApiProperty() body: string;
+
+    @OneToMany(() => Comment, comments => comments.post)
+    @ApiProperty({type: () => [Comment]}) comments: Comment[]
 }
