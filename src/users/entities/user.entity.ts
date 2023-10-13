@@ -7,16 +7,16 @@ import {Comment}    from "../../comments/entities/comment.entity";
 @Entity()
 export class User {
     @PrimaryGeneratedColumn()
-    @ApiProperty() id: number;
+    @ApiProperty({ description: 'ID пользователя',   nullable: false }) id: number;
 
     @Column()
-    @ApiProperty() full_name: string;
+    @ApiProperty({ description: 'Имя пользователя',   nullable: false }) full_name: string;
 
     @Column({unique: true})
-    @ApiProperty() email: string;
+    @ApiProperty({ description: 'E-Mail пользователя',   nullable: false }) email: string;
 
     @Column()
-    @ApiProperty() password: string;
+    @ApiProperty({ description: 'Пароль пользователя',   nullable: false }) password: string;
 
     @OneToMany(() => Post, post => post.user)
     @ApiProperty({type: () => [Post]}) posts: Post[]

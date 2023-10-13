@@ -1,9 +1,10 @@
 import {Entity, Column, PrimaryGeneratedColumn, OneToMany} from 'typeorm';
-import {ApiProperty} from "@nestjs/swagger";
+import {ApiProperty, ApiTags} from "@nestjs/swagger";
 
 import {Post} from "../../posts/entities/post.entity";
 
 @Entity()
+@ApiTags('Categories')
 export class Category {
     @PrimaryGeneratedColumn()
     @ApiProperty() id: number;
