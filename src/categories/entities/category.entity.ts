@@ -1,4 +1,4 @@
-import {Entity, Column, PrimaryGeneratedColumn, OneToMany} from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn, OneToMany, IsNull} from 'typeorm';
 import {ApiProperty, ApiTags} from "@nestjs/swagger";
 
 import {Post} from "../../posts/entities/post.entity";
@@ -11,6 +11,9 @@ export class Category {
 
     @Column()
     @ApiProperty() title: string;
+
+    @Column({default: null})
+    @ApiProperty() image: string;
 
     @OneToMany(() => Post, post => post.category)
     @ApiProperty({type: () => [Post]}) posts: Post[]

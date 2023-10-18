@@ -7,4 +7,8 @@ export class CreateCategoryDto {
     @IsNotEmpty()
     @IsString()
     title: string;
+
+    @ApiProperty({ description: 'Изображение категории', nullable: true })
+    @IsString()
+    image: string;
 }

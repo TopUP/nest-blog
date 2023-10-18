@@ -1,10 +1,26 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpStatus } from '@nestjs/common';
+import { extname } from 'path';
+import {
+    Controller,
+    Get,
+    Post,
+    Body,
+    Patch,
+    Param,
+    Delete,
+    HttpStatus,
+    UseInterceptors,
+    UploadedFile,
+    ParseFilePipeBuilder,
+    // HttpException,
+} from '@nestjs/common';
 import {ApiOperation, ApiQuery, ApiResponse, ApiTags} from "@nestjs/swagger";
 
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { Category }          from "./entities/category.entity";
+import { FileInterceptor }   from "@nestjs/platform-express";
+// import {diskStorage}         from "multer";
 
 @ApiTags('Categories')
 @Controller('categories')
@@ -50,4 +66,58 @@ export class CategoriesController {
     remove(@Param('id') id: string) {
         return this.categoriesService.remove(+id);
     }
+
+
+    @Post(':id/upload-image')
+    @UseInterceptors(FileInterceptor(
+        'image',
+        // {
+        //     storage: diskStorage({
+        //         destination: './uploads',
+        //         filename: (req, file, callback) => {
+        //             const name = file.originalname.split('.')[0];
+        //             const fileExtName = extname(file.originalname);
+        //             const randomName = Array(4)
+        //                 .fill(null)
+        //                 .map(() => Math.round(Math.random() * 10).toString(10))
+        //                 .join('');
+        //             callback(null, `${name}${randomName}${fileExtName}`);
+        //         },
+        //     }),
+        //     fileFilter: (req, file, callback) => {
+        //         if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+        //             return callback(
+        //                 new HttpException(
+        //                     'Only image files are allowed!',
+        //                     HttpStatus.BAD_REQUEST,
+        //                 ),
+        //                 false,
+        //             );
+        //         }
+        //         callback(null, true);
+        //     },
+        // }
+    ))
+    uploadImage(
+        @Param('id') id: string,
+        @UploadedFile(
+            new ParseFilePipeBuilder()
+                .addFileTypeValidator({
+                    fileType: 'jpeg|gif',
+                })
+                .addMaxSizeValidator({
+                    maxSize: 1000000
+                })
+                .build({
+                    errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY
+                }),
+        ) image: Express.Multer.File
+    ) {
+        const updateDto = new UpdateCategoryDto();
+        updateDto.image = image.filename
+        this.categoriesService.update(+id, updateDto);
+
+        return {image, updateDto};
+    }
+
 }

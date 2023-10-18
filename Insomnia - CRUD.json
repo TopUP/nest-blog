@@ -1,7 +1,7 @@
 {
     "_type": "export",
     "__export_format": 4,
-    "__export_date": "2023-10-05T21:42:23.903Z",
+    "__export_date": "2023-10-18T13:58:02.685Z",
     "__export_source": "insomnia.desktop.app:v2023.5.8",
     "resources": [
         {
@@ -87,7 +87,7 @@
         {
             "_id": "req_b9069f9f0e2d4e59b361feef4c726ebf",
             "parentId": "wrk_65afff19c6c94569af333b01f13251e9",
-            "modified": 1696532210718,
+            "modified": 1697550082019,
             "created": 1696497403275,
             "url": "http://localhost:3000/users",
             "name": "Users create",
@@ -95,7 +95,7 @@
             "method": "POST",
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"full_name\"\t: \"Full Name 1\",\n\t\"email\"\t\t\t: \"email1@email.com\",\n\t\"password\"\t: \"password\"\n}"
+                "text": "{\n\t\"full_name\"\t: \"Full Name 1\",\n\t\"email\"\t\t\t: \"email1email.com\",\n\t\"password\"\t: \"password\"\n}"
             },
             "parameters": [],
             "headers": [
@@ -150,9 +150,9 @@
         {
             "_id": "req_81eeab5c03244d6886d8f4a31fcbd4fe",
             "parentId": "wrk_65afff19c6c94569af333b01f13251e9",
-            "modified": 1696503823380,
+            "modified": 1696578885230,
             "created": 1696503818996,
-            "url": "http://localhost:3000/users/2",
+            "url": "http://localhost:3000/users/1",
             "name": "Users one",
             "description": "",
             "method": "GET",
@@ -178,7 +178,7 @@
         {
             "_id": "req_947796c448c84096a73f53cc52cf6752",
             "parentId": "wrk_65afff19c6c94569af333b01f13251e9",
-            "modified": 1696503885639,
+            "modified": 1697550457001,
             "created": 1696503855527,
             "url": "http://localhost:3000/users/2",
             "name": "Users update",
@@ -186,7 +186,7 @@
             "method": "PATCH",
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"email\"\t\t\t: \"email22@email.com\",\n\t\"password\"\t: \"password22\"\n}"
+                "text": "{\n\t\"email\"\t\t\t: \"email22email.com\",\n\t\"password\"\t: \"password22\"\n}"
             },
             "parameters": [],
             "headers": [
@@ -383,6 +383,50 @@
             ],
             "authentication": {},
             "metaSortKey": -1694835744932.5,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_002ce1daeb744ca5b1bdbcfe85a628a2",
+            "parentId": "wrk_65afff19c6c94569af333b01f13251e9",
+            "modified": 1697637277251,
+            "created": 1697631589901,
+            "url": "http://localhost:3000/categories/1/upload-image",
+            "name": "Categories upload image",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "multipart/form-data",
+                "params": [
+                    {
+                        "id": "pair_9b7f9b9b613843bda03f692b46b3cb55",
+                        "name": "image",
+                        "value": "",
+                        "description": "",
+                        "type": "file",
+                        "fileName": "C:\\Users\\Workstation\\Pictures\\ГP-02-21_Анализ победителей.xlsx"
+                    }
+                ]
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "multipart/form-data"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/2023.5.8"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1694806072535.3125,
             "isPrivate": false,
             "settingStoreCookies": true,
             "settingSendCookies": true,
